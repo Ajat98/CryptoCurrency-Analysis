@@ -1,2 +1,2 @@
 # CryptoCurrency-Analysis
-Testing Project for Analyzing Cryptocurrency prices
+Testing Project for Analyzing Cryptocurrency prices and correlations
