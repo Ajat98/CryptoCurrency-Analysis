@@ -11,8 +11,8 @@ import plotly.figure_factory as pff
 ply.init_notebook_mode(connected=True)
 
 #API key for Quandl
-quandl.ApiConfig.api_key = "MyApiKeyGoesHere"
-#Pull data from quandl API, pickle is used serialize/save data so it does not need to be redownloaded.
+quandl.ApiConfig.api_key = "APIKEYGOESHERE"
+#Pull data from quandl API, pickle is used serialize data so it does not need to be redownloaded.
 def pull_quandl_data(quandl_id):
     cache_path = '{}.pk1'.format(quandl_id).replace('/','-')
     try: #Will run successfully if pk file has already been created.
@@ -26,7 +26,7 @@ def pull_quandl_data(quandl_id):
         print('Cached {} at {}' .format(quandl_id, cache_path))
     return df 
 
-#Pulling BTC price data from Kraken
+# BTC price data pull from Kraken
 kraken_btc_price_usd = pull_quandl_data('BCHARTS/KRAKENUSD')
 
 #check first 5 rows of df
@@ -36,7 +36,7 @@ kraken_btc_price_usd.head()
 btc_chart = pgo.Scatter(x=kraken_btc_price_usd.index, y=kraken_btc_price_usd['Weighted Price'])
 ply.iplot([btc_chart])
 
-#Add price data from more BTC exchanges
+#Add price data from other BTC exchanges
 exchanges = ['Coinbase', 'Bitstamp', 'Cbx', 'ITBIT'] # see https://blog.quandl.com/api-for-bitcoin-data for a full list.
 exchange_data = {}
 exchange_data['Kraken'] = kraken_btc_price_usd
